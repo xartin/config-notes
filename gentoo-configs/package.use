@@ -1,0 +1,122 @@
+# core
+
+sys-devel/llvm gold
+dev-lang/python sqlite
+sys-kernel/gentoo-sources experimental
+sys-firmware/intel-microcode split-ucode hostonly
+sys-auth/pambase -passwdqc
+
+# misc
+
+sys-fs/cryptsetup -gcrypt nls openssl python udev -urandom
+app-admin/sudo ldap nls openssl pam sendmail -gcrypt offensive
+sys-devel/distcc gtk ipv6 -zeroconf -gnome -gssapi -hardened
+sys-apps/smartmontools caps daemon update-drivedb
+net-libs/nghttp2 threads xml cxx -debug -hpack-tools -jemalloc -libressl -static-libs -test -utils
+app-editors/vim X acl gpm nls perl python cscope -debug lua luajit -minimal -racket ruby tcl terminal vim-pager
+www-client/w3m X gpm imlib nls ssl unicode -fbcon -gdk-pixbuf -libressl -lynxkeymap -nntp -xface
+media-sound/murmur -zeroconf
+net-im/pidgin dbus gtk idn ncurses nls perl pie python sasl spell -xscreensaver -zeroconf -debug -doc -eds -gadu -gnutls -groupwise -gstreamer -meanwhile -networkmanager -prediction -tcl -tk -zephyr
+sci-libs/lapack lapacke
+
+dev-libs/botan boost sqlite
+media-video/obs-studio python_single_target_python3_7
+
+dev-python/matplotlib -wxwidgets
+
+# lutris
+
+sys-apps/file -python
+
+
+# pentoo
+
+app-crypt/hashcat brain
+
+
+# Graph collection
+
+dev-ruby/rrdtool-bindings graph -test
+net-analyzer/rrdtool graph perl python ruby tcpd -dbi -doc -lua -rados -rrdcgi -static-libs -tcl -test
+
+# postfix
+
+app-antivirus/clamav  bzip2 clamdtop -doc iconv ipv6 -libressl -metadata-analysis-api -milter -selinux -static-libs -test -uclibc xml
+dev-db/postgresql nls pam perl python readline server ssl systemd threads xml zlib -doc kerberos ldap -libressl llvm -static-libs tcl uuid
+dev-libs/cyrus-sasl authdaemond -berkdb -kerberos -ldapdb -openldap -pam postgres ssl -urandom -gdbm -java -libressl -mysql -sample -sqlite -srp -static-libs
+www-apps/postfixadmin mysql vacation vhosts postgres
+net-libs/courier-authlib berkdb crypt gdbm -mysql -pam -debug -ldap -libressl postgres -sqlite -static-libs
+net-mail/courier-imap berkdb fam gdbm ipv6 -debug -gnutls -libressl -selinux trashquota
+
+# bind
+
+net-dns/bind berkdb caps ipv6 json mysql python ssl threads -urandom xml zlib dlz -dnsrps -dnstap -doc -fixed-rrset geoip -gost -gssapi ldap -libressl -lmdb -odbc postgres -rpz -static-libs
+
+# samba
+
+net-fs/samba acl client -cups fam ldap pam python system-mitkrb5 systemd -zeroconf -addc -addns -ads -cluster -debug -dmapi -gnutls -gpg -iprint -quota syslog  winbind
+
+# nfs
+
+net-fs/nfs-utils caps ipv6 ldap libmount nfsdcld nfsidmap nfsv4 nfsv41 tcpd uuid -kerberos
+
+# Sonarr
+
+media-libs/libmediainfo curl mms
+media-video/mediainfo curl mms
+net-nntp/nzbget ncurses ssl zlib -gnutls parcheck
+media-libs/chromaprint tools
+
+# zfs
+
+sys-fs/zfs-kmod rootfs custom-cflags
+sys-fs/zfs rootfs -test-suite custom-cflags
+
+# qemu
+
+app-emulation/qemu aio alsa bzip2 caps curl fdt filecaps gnutls gtk io-uring iscsi jpeg lzo ncurses nfs nls numa opengl oss -pin-upstream-blobs png pulseaudio python sasl sdl seccomp spice ssh usb usbredir vde vhost-net vhost-user-fs virgl virtfs vnc vte xattr xkb -accessibility  -debug -doc -glusterfs -infiniband -jemalloc -plugins -rbd -sdl-image -smartcard -snappy -static -static-user -systemtap -tci -test -xen -xfs
+app-emulation/libvirt caps dbus fuse iscsi iscsi-direct libssh libvirtd macvtap nfs nls numa qemu sasl udev vepa -virt-network zfs -apparmor -audit -dtrace -firewalld -glusterfs -lvm -lxc -parted -pcap -rbd -virtualbox -wireshark-plugins -xen
+dev-python/twisted conch
+net-dns/dnsmasq script
+net-misc/spice-gtk gtk3 usbredir
+app-emulation/virt-manager gtk sasl
+
+# kde
+
+media-sound/elisa vlc
+
+# wine
+
+app-emulation/wine-staging X alsa cups faudio fontconfig gecko jpeg lcms ldap mono mp3 ncurses nls opengl osmesa perl png realtime run-exes samba sdl ssl threads truetype udev udisks v4l xcomposite xinerama xml -capi -custom-cflags -dos -gphoto2 -gsm -gssapi -gstreamer -kerberos -netapi -odbc -openal -opencl -oss -pcap -pipelight -prelink pulseaudio -scanner -test -themes vaapi vkd3d vulkan
+
+# firefox
+
+www-client/firefox pgo lto clang custom-cflags custom-optimization gmp-autoupdate hwaccel pulseaudio screenshot startup-notification system-av1 system-icu system-jpeg system-libevent system-libvpx system-sqlite system-webp wifi -bindist -debug -eme-free -geckodriver -hardened -jack -test -wayland
+
+# supermicro 
+
+sys-apps/superdiag usb iso
+
+# DevOps
+app-admin/puppet -augeas -diff doc -emacs ldap rrdtool shadow sqlite -test vim-syntax
+net-misc/cfengine acl mysql qdbm xml examples libvirt masterfiles postgres -tokyocabinet vim-syntax
+dev-python/ipython qt5 smp -doc -examples matplotlib nbconvert -notebook -test
+net-analyzer/rrdtool ruby
+sys-libs/libomp -cuda hwloc offload ompt -test
+net-libs/zeromq drafts
+dev-python/QtPy printsupport
+
+# docker
+
+app-emulation/docker container-init -device-mapper -overlay seccomp -apparmor -aufs btrfs -hardened
+
+# rtorrent
+
+net-p2p/rtorrent daemon
+
+# php
+
+dev-lang/php berkdb bzip2 cli crypt ctype curl exif fileinfo filter gdbm gmp hash iconv ipv6 json ldap mysql nls opcache phar posix postgres -readline session simplexml spell ssl systemd tokenizer truetype unicode xml zlib apache2 bcmath calendar -cdb cgid cjk -debug -embed -enchant -flatfile fpm -ftp gd imap -inifile intl -iodbc kerberos ldap-sasl libedit libmysqlclient mhash -mssql mysqli mysql -oci8-instant-client -odbc pcntl pdo -qdbm -recode -sharedmem snmp soap sockets sqlite -sybase-ct sysvipc threads -tidy -vpx -wddx xmlreader xmlrpc -xmlwriter -xpm -xslt zip zip-encryption
+virtual/imap-c-client kerberos
+net-libs/c-client kerberos
+

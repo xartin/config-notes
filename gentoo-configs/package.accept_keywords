@@ -1,0 +1,83 @@
+# important shit
+
+sys-block/open-iscsi
+
+# misc
+sys-cluster/torque
+
+net-im/discord-bin
+sys-process/htop
+net-misc/rclone
+dev-db/sqlitestudio
+net-p2p/go-ipfs-bin
+net-misc/youtube-dl
+games-misc/lolcat
+dev-ruby/paint
+dev-ruby/optimist
+dev-python/py-cpuinfo
+sys-kernel/xow
+games-util/xboxdrv
+www-misc/awstats
+x11-themes/smplayer-skins
+kde-misc/corectrl
+
+# pentoo
+
+app-crypt/hashcat
+app-crypt/hashcat-utils
+
+# zfs
+#>=sys-fs/zfs-kmod-0.8.4
+#>=sys-fs/zfs-0.8.4
+#>=sys-fs/zfs-auto-snapshot-1.2.4
+
+# qemu
+# app-emulation/virt-manager
+
+# media managment
+=net-nntp/nzbget-21.0-r1
+net-nntp/sonarr
+net-nntp/radarr
+net-nntp/lidarr
+media-video/filebot
+
+# steam
+
+games-util/steam-meta
+media-fonts/steamfonts
+games-util/steam-client-meta
+games-util/steam-launcher
+games-util/steam-games-meta
+games-util/game-device-udev-rules
+games-util/lutris
+
+# plex server
+
+#media-tv/plex-media-server
+net-nntp/tautulli
+
+# wine
+
+app-emulation/wine-staging
+app-emulation/wine-mono
+app-emulation/wine-gecko
+app-emulation/faudio
+app-emulation/vkd3d
+
+# obs studio
+
+media-video/obs-studio
+
+# firefox
+
+www-client/firefox
+dev-lang/rust
+virtual/rust
+dev-libs/nss
+media-libs/dav1d
+
+# java
+
+dev-java/openjdk
+dev-java/openjfx
+dev-java/swt
