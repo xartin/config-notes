@@ -1,0 +1,275 @@
+Never edit /etc/locale.gen despite what the handbook directs you
+
+Get Linux Mint on USB stick and don't install:
+
+Open the terminal:
+
+=== Partitioning: ===
+
+parted -a optimal /dev/sda
+
+mklabel gpt 
+mkpart esp fat32 1 513 
+mkpart swap linux-swap 513 2561 
+mkpart rootfs ext4 2561 100% 
+set 1 boot on
+
+print
+
+Disk /dev/sda:
+Sector size (logical/physical): 512B/4096B
+Partition Table: gpt
+Disk Flags:
+
+Number  Start   End     Size    File system     Name    Flags
+ 1      1049kB  538MB   537MB   fat32           esp     boot, esp
+ 2      538MB   4832MB  4294MB  linux-swap(v1)  swap
+ 3      4832MB  2000GB  1996GB  ext4            rootfs
+
+quit
+
+=== Formatting filesystems: ===
+
+mkfs.fat -F 32 /dev/sda1
+mkswap /dev/sda2
+mkfs.ext4 /dev/sda3
+
+=== Mounting root filesystem partition: ===
+
+mount /dev/sda3 /mnt/gentoo
+
+=== Mounting The Boot Partition: ===
+
+mkdir /mnt/gentoo/efi
+mount /dev/sda1 /mnt/gentoo/efi
+
+=== Download The Stage3 Tarball: ===
+
+cd /mnt/gentoo
+
+Download the stage3 tarball online by finding the one that you want, right clicking, and clicking on Copy Link Location to get the URL:
+
+~~~ This filename randomly automatically updates online and will become invalid. ~~~
+
+wget https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20210317T214503Z/stage3-amd64-20210317T214503Z.tar.xz
+
+tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
+
+=== Configure make.conf: ===
+
+nano /mnt/gentoo/etc/portage/make.conf
+
+
+COMMON_FLAGS="-march=native -O2 -pipe"
+ACCEPT_LICENSE="*"
+MAKEOPTS="-j2"
+EMERGE_DEFAULT_OPTS="--with-dbeps=y --complete-graph=y"
+FEATURES="candy fixlafiles unmerge-orphans"
+VIDEO_CARDS="nvidia intel i915 i965"
+USE="elogind dbus imlib networkmanager pulseaudio osmesa vulkan -systemd"
+RUBY_TARGETS="ruby26"
+INPUT_DEVICES="libinput"
+
+
+GRUB_PLATFORMS="efi-64"
+GENTOO_MIRRORS="https://mirror.bytemark.co.uk/gentoo/"
+
+
+=== Entering The New Enviroment: ===
+
+chroot /mnt/gentoo /bin/bash
+source /etc/profile
+export PS1="(chroot) ${PS1}"
+
+
+=== Sync portage repo files: ===
+emerge-webrsync
+
+=== Configure tty keymaps for maximum english: ===
+
+nano /etc/conf.d/keymaps
+keymap=gb
+
+=== Configure /etc/locale.gen to build all locales: ===
+
+Nano /etc/locale.gen
+#C.UTF8 UTF-8
+
+=== Permit use of simple passwords ===
+
+nano /etc/portage/package.use/pambase
+sys-auth/pambase -passwdqc 
+
+=== Configure tmpfs for portage: ===
+
+nano /etc/fstab
+
+tmpfs /var/tmp/portage tmpfs rw,nosuid,noatime,nodev,size=4G,mode=775,uid=portage,gid=portage,x-mount.mkdir=775 0 0
+
+mkdir /etc/portage/env
+mkdir /var/tmp/notmpfs
+
+nano /etc/portage/env/notmpfs.conf
+
+PORTAGE_TMPDIR="/var/tmp/notmpfs"
+
+nano /etc/portage/package.env
+
+dev-lang/ghc                    notmpfs.conf
+dev-lang/mono                   notmpfs.conf
+dev-lang/rust                   notmpfs.conf
+dev-lang/spidermonkey           notmpfs.conf
+sys-devel/gcc            	notmpfs.conf
+dev-qt/qtwebengine              notmpfs.conf
+
+mount /var/tmp/portage
+
+=== Complete global system updates: ===
+
+emerge -1 glibc && emerge -uDN world
+
+
+=== Blacklisting nouveau: ===
+
+nano /etc/modprobe.d/nouveau.conf
+blacklist nouveau
+
+=== Install everything needed for system boot ===
+
+emerge sys-kernel/gentoo-kernel-bin linux-firmware networkmanager dhcpcd dhclient iw cronie sysklogd grub pciutils superadduser app-misc/screen
+
+=== Configure Fstab: ===
+
+blkid
+
+Copy the UUID= ID number and form this table here
+
+nano /etc/fstab
+
+UUID=(paste numbers here and remove the quotes)		/efi		vfat		defaults		1 2
+UUID=(paste numbers here and remove the quotes)         none            swap            sw                      0 0
+UUID=paste numbers here and remove the quotes)		/		ext4		defaults		0 1
+
+=== Configure hostname: ===
+
+nano -w /etc/conf.d/hostname
+
+# Set the hostname variable to the selected host name
+hostname="(Put the hostname of your choosing here, I went with tux, and if it's not tux, the rest of "tux" will need changing too)"
+
+=== Edit /etc/hosts config ===
+
+nano /etc/hosts
+
+# IPv4 and IPv6 localhost aliases
+127.0.0.1					tux.homenetwork.local 	 tux	 localhost.localdomain 	localhost
+::1                  				tux.homenetwork.local 	 tux	 localhost.localdomain	localhost
+
+=== Root Password: ===
+
+passwd
+
+=== Configure system services: ===
+
+rc-update add sysklogd default
+rc-update add cronie default
+rc-update add sshd default
+rc-update add NetworkManager default
+
+=== Configure Grub: ===
+
+grub-install --target=x86_64-efi --efi-directory=/efi
+grub-mkconfig -o /boot/grub/grub.cfg
+
+User Administration:
+
+superadduser
+Login name: [USERNAME]
+Enter
+Enter
+Additional groups (comma seperated) []: wheel,video,audio
+Enter
+Enter
+Enter
+Enter
+Enter
+Enter
+Enter
+Enter
+Enter New Password: [PASSWORD]
+
+
+=== Rebooting: ===
+
+exit
+cd
+umount -R /mnt/gentoo
+shutdown -r now
+
+Boot system and login as root user
+
+Root username:
+Root password:
+
+=== Configuring The Network: ===
+nmtui
+Activate a connection
+[YOUR BROADBAND NAME GOES HERE]
+Enter
+Type in Wifi password:
+Esc
+Esc
+ping weebs.ru
+Ctrl C
+
+=== switch portage profiles: ===
+
+eselect profile set 8
+
+=== enable global 32bit ABI: ===
+
+nano /etc/portage/make.conf
+
+Add ABI_X86="64 32"
+
+=== Complete world updates to apply profile changes: ===
+
+=== check for dependency conflicts ===
+
+emerge -uDNpv world 
+
+=== apply profile changes ===
+
+emerge -uDN world
+
+=== Install xorg-x11 ===
+
+emerge xorg-x11
+
+=== Unmask discord-bin: ===
+
+nano /etc/portage/package.accept_keywords/discord
+
+net-im/discord-bin
+
+=== Install general applications and plasma desktop: ===
+
+emerge firefox-bin lightdm smplayer discord-bin openoffice-bin lutris eselect-repository dev-vcs/git x11-apps/setxkbmap plasma-meta kde-apps/kdecore-meta kde-apps/kdeadmin-meta kde-apps/kdegraphics-meta kde-apps/kdemultimedia-meta kde-apps/kdenetwork-meta kde-apps/kdeutils-meta 
+
+=== Wait for eternity or get a girlfriend: ===
+
+alt+f2
+
+links https://pornhub.com
+
+=== Configure Lightdm: ===
+
+nano /etc/conf.d/xdm
+
+DISPLAYMANAGER="lightdm"
+
+/etc/init.d/xdm start
+
+=== Set xorg keymap to maximum english: ===
+
+setxkbmap -layout gb
