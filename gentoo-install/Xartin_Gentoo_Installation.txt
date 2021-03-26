@@ -1,6 +1,6 @@
 Never edit /etc/locale.gen despite what the handbook directs you
 
-Get Linux distro of yoru choosing flashed to USB stick and don't install:
+Get Linux distro of your're choosing flashed to USB stick and don't install:
 
 Open the terminal:
 
