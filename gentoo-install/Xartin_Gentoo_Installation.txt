@@ -63,7 +63,7 @@ nano /mnt/gentoo/etc/portage/make.conf
 COMMON_FLAGS="-march=native -O2 -pipe"
 ACCEPT_LICENSE="*"
 MAKEOPTS="-j2"
-EMERGE_DEFAULT_OPTS="--with-dbeps=y --complete-graph=y"
+EMERGE_DEFAULT_OPTS="--with-bdeps=y --complete-graph=y"
 FEATURES="candy fixlafiles unmerge-orphans"
 VIDEO_CARDS="nvidia intel i915 i965"
 USE="elogind dbus imlib networkmanager pulseaudio osmesa vulkan -systemd"
