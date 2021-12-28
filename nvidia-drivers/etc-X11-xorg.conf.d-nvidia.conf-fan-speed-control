@@ -1,0 +1,5 @@
+Section "Device"
+  Identifier  "nvidia"
+  Driver      "nvidia"
+  Option      "Coolbits" "31"
+EndSection

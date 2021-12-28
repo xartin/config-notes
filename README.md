@@ -1,6 +1,6 @@
 # General published configuration guides and shell scripts
 
-Current as of 24/03/2021
+Current as of 28/12/2021
 
 Maintainer: xartin / ali3nx
 * (https://github.com/xartin)
