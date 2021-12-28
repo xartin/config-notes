@@ -1,17 +1,36 @@
+<<<<<<< HEAD
 *** Never edit /etc/locale.gen despite what the handbook directs you ***
 
 Get Linux distro of your're choosing flashed to USB stick and don't install:
+=======
+Never edit /etc/locale.gen for excluding locales despite what the handbook directs. 
+
+A full global regional locale build only uses 480 megabytes of disk space.
+
+The consequences of not supporting a beneficial locale due to inexperience or ignorance 
+are far more annoying than 480 megabytes of disk space being consumed.
+
+Download Kubuntu Linux or some other gui livecd on USB stick and don't install:
+>>>>>>> 4b83a9b (	new file:   cacti/cacti_host_template_apache_statistics_mod_status.xml)
 
 Open the terminal:
+
+=== livecd preconfiguration ===
+
+using non gentoo provided live media requires a fully elevated 
+root user shell and the chroot mountpoint created 
+
+sudo -i or su - root or sudo bash
+mkdir /mnt/gentoo
 
 === Partitioning: ===
 
 parted -a optimal /dev/sda
 
 mklabel gpt 
-mkpart esp fat32 1 513 
-mkpart swap linux-swap 513 2561 
-mkpart rootfs ext4 2561 100% 
+mkpart esp fat32 0% 512 
+mkpart swap linux-swap 512 2560 
+mkpart rootfs ext4 2560 100% 
 set 1 boot on
 
 print
@@ -264,11 +283,11 @@ links https://pornhub.com
 
 === Configure Lightdm: ===
 
-nano /etc/conf.d/xdm
+nano /etc/conf.d/display-manager-init
 
 DISPLAYMANAGER="lightdm"
 
-/etc/init.d/xdm start
+/etc/init.d/display-manager-init start
 
 === Set xorg keymap to maximum english: ===
 
