@@ -1,7 +1,5 @@
-<<<<<<< HEAD
-*** Never edit /etc/locale.gen despite what the handbook directs you ***
-
 Get Linux distro of your're choosing flashed to USB stick and don't install:
+*** Never edit /etc/locale.gen despite what the handbook directs you ***
 =======
 Never edit /etc/locale.gen for excluding locales despite what the handbook directs. 
 
@@ -11,7 +9,6 @@ The consequences of not supporting a beneficial locale due to inexperience or ig
 are far more annoying than 480 megabytes of disk space being consumed.
 
 Download Kubuntu Linux or some other gui livecd on USB stick and don't install:
->>>>>>> 4b83a9b (	new file:   cacti/cacti_host_template_apache_statistics_mod_status.xml)
 
 Open the terminal:
 
@@ -70,7 +67,7 @@ Download the stage3 tarball online by finding the one that you want, right click
 
 ~~~ This filename randomly automatically updates online and will become invalid. ~~~
 
-wget https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20210317T214503Z/stage3-amd64-20210317T214503Z.tar.xz
+wget https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20220501T170547Z/stage3-amd64-openrc-20220501T170547Z.tar.xz
 
 tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
 
@@ -83,12 +80,11 @@ COMMON_FLAGS="-march=native -O2 -pipe"
 ACCEPT_LICENSE="*"
 MAKEOPTS="-j2"
 EMERGE_DEFAULT_OPTS="--with-bdeps=y --complete-graph=y"
-FEATURES="candy fixlafiles unmerge-orphans"
+FEATURES="candy"
 VIDEO_CARDS="nvidia intel i915 i965"
 USE="elogind dbus imlib networkmanager pulseaudio osmesa vulkan -systemd"
-RUBY_TARGETS="ruby26"
+RUBY_TARGETS="ruby27"
 INPUT_DEVICES="libinput"
-
 
 GRUB_PLATFORMS="efi-64"
 GENTOO_MIRRORS="https://mirror.bytemark.co.uk/gentoo/"
@@ -147,12 +143,6 @@ mount /var/tmp/portage
 
 emerge -1 glibc && emerge -uDN world
 
-
-=== Blacklisting nouveau: ===
-
-nano /etc/modprobe.d/nouveau.conf
-blacklist nouveau
-
 === Install everything needed for system boot ===
 
 emerge sys-kernel/gentoo-kernel-bin linux-firmware networkmanager dhcpcd dhclient iw cronie sysklogd grub pciutils superadduser app-misc/screen
@@ -167,7 +157,7 @@ nano /etc/fstab
 
 UUID=(paste numbers here and remove the quotes)		/efi		vfat		defaults		1 2
 UUID=(paste numbers here and remove the quotes)         none            swap            sw                      0 0
-UUID=paste numbers here and remove the quotes)		/		ext4		defaults		0 1
+UUID=(paste numbers here and remove the quotes)		/		ext4		defaults		0 1
 
 === Configure hostname: ===
 
@@ -182,7 +172,7 @@ nano /etc/hosts
 
 # IPv4 and IPv6 localhost aliases
 127.0.0.1					tux.homenetwork.local 	 tux	 localhost.localdomain 	localhost
-::1                  				tux.homenetwork.local 	 tux	 localhost.localdomain	localhost
+::1           tux.homenetwork.local 	 tux	 localhost.localdomain	 localhost
 
 === Root Password: ===
 
