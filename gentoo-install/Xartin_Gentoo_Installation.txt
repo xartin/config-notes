@@ -1,12 +1,6 @@
 Get Linux distro of your're choosing flashed to USB stick and don't install:
-*** Never edit /etc/locale.gen despite what the handbook directs you ***
-=======
-Never edit /etc/locale.gen for excluding locales despite what the handbook directs. 
 
-A full global regional locale build only uses 480 megabytes of disk space.
 
-The consequences of not supporting a beneficial locale due to inexperience or ignorance 
-are far more annoying than 480 megabytes of disk space being consumed.
 
 Download Kubuntu Linux or some other gui livecd on USB stick and don't install:
 
@@ -106,6 +100,13 @@ nano /etc/conf.d/keymaps
 keymap=gb
 
 === Configure /etc/locale.gen to build all locales: ===
+
+*** Never edit /etc/locale.gen for excluding locales despite what the handbook directs. ***
+
+A full global regional locale build only uses 480 megabytes of disk space.
+
+The consequences of not supporting a beneficial locale due to inexperience or ignorance 
+are far more annoying than 480 megabytes of disk space being consumed.
 
 Nano /etc/locale.gen
 #C.UTF8 UTF-8
