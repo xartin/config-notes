@@ -1,8 +1,4 @@
-Get Linux distro of your're choosing flashed to USB stick and don't install:
-
-
-
-Download Kubuntu Linux or some other gui livecd on USB stick and don't install:
+Download a Linux distro livecd of your're choosing flashed to USB stick, boot live environment and don't install:
 
 Open the terminal:
 
