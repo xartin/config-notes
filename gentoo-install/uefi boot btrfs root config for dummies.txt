@@ -1,0 +1,54 @@
+This arch linux guide used for config reference
+
+https://www.nishantnadkarni.tech/posts/arch_installation/
+
+1) Parted
+
+uefi
+16GB swap
+btrfs rootfs 
+ 
+parted -a optimal /dev/sda
+
+mklabel gpt 
+mkpart esp fat32 0% 513 
+mkpart swap linux-swap 513 16896 
+mkpart rootfs btrfs 16896 100% 
+set 1 boot on
+
+2) create filesystems
+
+mkfs.fat -F32 /dev/sda1
+mkswap /dev/sda2
+mkfs.btrfs /dev/sda3
+
+3) btrfs subvolumes
+
+mount /dev/sda3 /mnt/gentoo
+
+btrfs su cr /mnt/gentoo/@
+btrfs su cr /mnt/gentoo/@home
+btrfs su cr /mnt/gentoo/@.snapshots
+
+umount /mnt/gentoo
+
+mount -o subvol=@ /dev/sda3 /mnt/gentoo
+
+# You need to manually create folder to mount the other subvolumes at
+mkdir /mnt/gentoo/{efi,home,.snapshots}
+
+mount -o commit=120,compress=zstd,space_cache,subvol=@home /dev/sda3 /mnt/gentoo/home
+mount -o commit=120,compress=zstd,space_cache,subvol=@.snapshots /dev/sda3 /mnt/gentoo/.snapshots
+mount /dev/sda1 /mnt/gentoo/efi
+
+resume normal gentoo install
+
+fstab config 
+
+adjust to match the results of blkid command
+
+UUID=847df035-e726-45e9-9cff-fb46aa97ae6e       /               btrfs           defaults,compress=zstd,subvolid=256,subvol=@           0 0
+UUID=847df035-e726-45e9-9cff-fb46aa97ae6e       /home           btrfs           defaults,compress=zstd,subvolid=257,subvol=@home       0 0
+UUID=847df035-e726-45e9-9cff-fb46aa97ae6e       /.snapshots     btrfs           defaults,compress=zstd,subvolid=258,subvol=@.snapshots 0 0
+UUID=e30fbe93-d09e-4ea9-a1c7-d18d5c5c95fb       none            swap            sw              0 0
+UUID=7F8B-5EF0                                  /efi            vfat            noauto,defaults 0 2
