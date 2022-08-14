@@ -1,38 +1,26 @@
 # core
 
-sys-devel/llvm gold
-dev-lang/python sqlite
+sys-apps/systemd iptables
 sys-kernel/gentoo-sources experimental
 sys-firmware/intel-microcode split-ucode hostonly
 sys-auth/pambase -passwdqc
 
 # misc
 
-sys-fs/cryptsetup -gcrypt nls openssl python udev -urandom
+sys-fs/cryptsetup -gcrypt nls openssl python -urandom
 app-admin/sudo ldap nls openssl pam sendmail -gcrypt offensive
 sys-devel/distcc gtk ipv6 -zeroconf -gnome -gssapi -hardened
 sys-apps/smartmontools caps daemon update-drivedb
-net-libs/nghttp2 threads xml cxx -debug -hpack-tools -jemalloc -libressl -static-libs -test -utils
 app-editors/vim X acl gpm nls perl python cscope -debug lua luajit -minimal -racket ruby tcl terminal vim-pager
-www-client/w3m X gpm imlib nls ssl unicode -fbcon -gdk-pixbuf -libressl -lynxkeymap -nntp -xface
-media-sound/murmur -zeroconf
-net-im/pidgin dbus gtk idn ncurses nls perl pie python sasl spell -xscreensaver -zeroconf -debug -doc -eds -gadu -gnutls -groupwise -gstreamer -meanwhile -networkmanager -prediction -tcl -tk -zephyr
-sci-libs/lapack lapacke
-
-dev-libs/botan boost sqlite
-media-video/obs-studio python_single_target_python3_7
-
-dev-python/matplotlib -wxwidgets
-
-# lutris
-
+net-voip/murmur -ice -zeroconf
 sys-apps/file -python
+app-portage/kuroneko scraper
+net-im/pidgin -xscreensaver -zeroconf
 
 
 # pentoo
 
 app-crypt/hashcat brain
-
 
 # Graph collection
 
@@ -76,14 +64,19 @@ sys-fs/zfs rootfs -test-suite custom-cflags
 
 app-emulation/qemu aio alsa bzip2 caps curl fdt filecaps gnutls gtk io-uring iscsi jpeg lzo ncurses nfs nls numa opengl oss -pin-upstream-blobs png pulseaudio python sasl sdl seccomp spice ssh usb usbredir vde vhost-net vhost-user-fs virgl virtfs vnc vte xattr xkb -accessibility  -debug -doc -glusterfs -infiniband -jemalloc -plugins -rbd -sdl-image -smartcard -snappy -static -static-user -systemtap -tci -test -xen -xfs
 app-emulation/libvirt caps dbus fuse iscsi iscsi-direct libssh libvirtd macvtap nfs nls numa qemu sasl udev vepa -virt-network zfs -apparmor -audit -dtrace -firewalld -glusterfs -lvm -lxc -parted -pcap -rbd -virtualbox -wireshark-plugins -xen
+sys-cluster/neutron ipv6 mysql postgres server -linuxbridge -openvswitch python_targets_python3_8 -compute-only -dhcp -haproxy -l3 -metadata -sqlite
 dev-python/twisted conch
 net-dns/dnsmasq script
 net-misc/spice-gtk gtk3 usbredir
 app-emulation/virt-manager gtk sasl
+app-crypt/swtpm fuse seccomp gnutls
+net-libs/gnutls pkcs11 tools
 
 # kde
 
-media-sound/elisa vlc
+kde-apps/kget -bittorrent
+kde-apps/kdenetwork-meta -bittorrent
+kde-plasma/plasma-meta -firewall
 
 # wine
 
@@ -108,7 +101,7 @@ dev-python/QtPy printsupport
 
 # docker
 
-app-emulation/docker container-init -device-mapper -overlay seccomp -apparmor -aufs btrfs -hardened
+app-containers/docker container-init -device-mapper -overlay seccomp -apparmor -aufs btrfs -hardened
 
 # rtorrent
 
