@@ -1,15 +1,12 @@
-# important shit
-
-sys-block/open-iscsi
-
 # misc
-sys-cluster/torque
 
+sys-block/lsiutil
 net-im/discord-bin
 sys-process/htop
 net-misc/rclone
 dev-db/sqlitestudio
-net-p2p/go-ipfs-bin
+# move net-p2p/go-ipfs net-p2p/kubo
+net-p2p/kubo
 net-misc/youtube-dl
 games-misc/lolcat
 dev-ruby/paint
@@ -20,26 +17,60 @@ games-util/xboxdrv
 www-misc/awstats
 x11-themes/smplayer-skins
 kde-misc/corectrl
+dev-python/pyfiglet
+dev-python/rich
+app-portage/kuroneko
+www-client/torbrowser-launcher
+
+# opencl
+
+dev-util/clinfo
+
+# rocm
+
+dev-libs/rocm-opencl-runtime
+dev-libs/rocr-runtime
+dev-libs/rocm-comgr
+dev-libs/rocm-device-libs
+dev-util/rocm-cmake
+sys-devel/llvm-roc
+dev-libs/roct-thunk-interface
 
 # pentoo
 
 app-crypt/hashcat
 app-crypt/hashcat-utils
 
-# zfs
-#>=sys-fs/zfs-kmod-0.8.4
-#>=sys-fs/zfs-0.8.4
-#>=sys-fs/zfs-auto-snapshot-1.2.4
+app-crypt/johntheripper-jumbo
 
-# qemu
-# app-emulation/virt-manager
+# zfs
+#sys-fs/zfs-kmod
+#sys-fs/zfs
+sys-fs/sanoid
+
+# mailserver
+
+mail-client/roundcube
+
+# mumble server
+
+# move media-sound/murmur net-voip/murmur
+net-voip/murmur
+
+# server monitoring
+
+www-apps/grafana-bin
+app-metrics/apache_exporter
+acct-group/apache_exporter
+acct-user/apache_exporter
+dev-util/promu
 
 # media managment
-=net-nntp/nzbget-21.0-r1
-net-nntp/sonarr
-net-nntp/radarr
-net-nntp/lidarr
-media-video/filebot
+net-nntp/nzbget
+www-apps/sonarr
+www-apps/radarr
+www-apps/lidarr
+www-apps/tautulli
 
 # steam
 
@@ -53,8 +84,14 @@ games-util/lutris
 
 # plex server
 
-#media-tv/plex-media-server
-net-nntp/tautulli
+media-tv/plex-media-server
+# move net-nntp/tautulli www-apps/tautulli
+www-apps/tautulli
+
+# qemu
+
+app-crypt/swtpm
+dev-libs/libtpms
 
 # wine
 
@@ -71,13 +108,7 @@ media-video/obs-studio
 # firefox
 
 www-client/firefox
-dev-lang/rust
-virtual/rust
+#dev-lang/rust
+#virtual/rust
 dev-libs/nss
-media-libs/dav1d
-
-# java
-
-dev-java/openjdk
-dev-java/openjfx
-dev-java/swt
+dev-libs/nspr
