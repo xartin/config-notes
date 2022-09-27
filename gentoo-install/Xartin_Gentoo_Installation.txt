@@ -69,10 +69,22 @@ nano /mnt/gentoo/etc/portage/make.conf
 COMMON_FLAGS="-march=native -O2 -pipe"
 ACCEPT_LICENSE="*"
 MAKEOPTS="-j2"
-EMERGE_DEFAULT_OPTS="--with-bdeps=y --complete-graph=y"
+EMERGE_DEFAULT_OPTS="--with-bdeps y --complete-graph y --fail-clean y"
 FEATURES="candy"
-VIDEO_CARDS="nvidia intel i915 i965"
-USE="elogind dbus imlib networkmanager pulseaudio osmesa vulkan -systemd"
+
+# Uncommend the correct line belonw to configure 
+# you're xorg videocard driver support
+
+# nvidia with vulkan support
+VIDEO_CARDS="nvidia intel i915"
+
+# amd graphics
+#VIDEO_CARDS="amdgpu radeon radeonsi"
+
+# Intel graphics only
+#VIDEO_CARDS="intel i915 i965 iris"
+
+USE="elogind dbus networkmanager pulseaudio osmesa vulkan -systemd"
 RUBY_TARGETS="ruby27"
 INPUT_DEVICES="libinput"
 
@@ -92,6 +104,8 @@ emerge-webrsync
 
 === Configure tty keymaps for maximum english: ===
 
+Set this to your regional keymap or optionally skip this step 
+
 nano /etc/conf.d/keymaps
 keymap=gb
 
@@ -109,8 +123,10 @@ Nano /etc/locale.gen
 
 === Permit use of simple passwords ===
 
-nano /etc/portage/package.use/pambase
-sys-auth/pambase -passwdqc 
+edit ths file below and change
+enforce=everyone to enforce=none
+
+nano /etc/security/passwdqc.conf
 
 === Configure tmpfs for portage: ===
 
@@ -142,7 +158,7 @@ emerge -1 glibc && emerge -uDN world
 
 === Install everything needed for system boot ===
 
-emerge sys-kernel/gentoo-kernel-bin linux-firmware networkmanager dhcpcd dhclient iw cronie sysklogd grub pciutils superadduser app-misc/screen
+emerge sys-kernel/gentoo-kernel-bin linux-firmware networkmanager dhcpcd cronie sysklogd grub pciutils superadduser app-misc/screen
 
 === Configure Fstab: ===
 
@@ -252,15 +268,9 @@ emerge -uDN world
 
 emerge xorg-x11
 
-=== Unmask discord-bin: ===
-
-nano /etc/portage/package.accept_keywords/discord
-
-net-im/discord-bin
-
 === Install general applications and plasma desktop: ===
 
-emerge firefox-bin lightdm smplayer discord-bin openoffice-bin lutris eselect-repository dev-vcs/git x11-apps/setxkbmap plasma-meta kde-apps/kdecore-meta kde-apps/kdeadmin-meta kde-apps/kdegraphics-meta kde-apps/kdemultimedia-meta kde-apps/kdenetwork-meta kde-apps/kdeutils-meta 
+emerge firefox-bin sddm smplayer discord-bin openoffice-bin lutris eselect-repository dev-vcs/git x11-apps/setxkbmap plasma-meta kde-apps/kdecore-meta kde-apps/kdeadmin-meta kde-apps/kdegraphics-meta kde-apps/kdemultimedia-meta kde-apps/kdenetwork-meta kde-apps/kdeutils-meta 
 
 === Wait for eternity or get a girlfriend: ===
 
@@ -268,11 +278,11 @@ alt+f2
 
 links https://pornhub.com
 
-=== Configure Lightdm: ===
+=== Configure sddm: ===
 
 nano /etc/conf.d/display-manager-init
 
-DISPLAYMANAGER="lightdm"
+DISPLAYMANAGER="sddm"
 
 /etc/init.d/display-manager-init start
 
