@@ -72,7 +72,7 @@ MAKEOPTS="-j2"
 EMERGE_DEFAULT_OPTS="--with-bdeps y --complete-graph y --fail-clean y"
 FEATURES="candy"
 
-# Uncommend the correct line belonw to configure 
+# Uncomment the correct line below to configure 
 # you're xorg videocard driver support
 
 # nvidia with vulkan support
