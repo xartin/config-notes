@@ -35,11 +35,11 @@ umount /mnt/gentoo
 mount -o subvol=@ /dev/sda3 /mnt/gentoo
 
 # You need to manually create folder to mount the other subvolumes at
-mkdir /mnt/gentoo/{efi,home,.snapshots}
+mkdir /mnt/gentoo/{boot,home,.snapshots}
 
-mount -o commit=120,compress=zstd,space_cache,subvol=@home /dev/sda3 /mnt/gentoo/home
-mount -o commit=120,compress=zstd,space_cache,subvol=@.snapshots /dev/sda3 /mnt/gentoo/.snapshots
-mount /dev/sda1 /mnt/gentoo/efi
+mount -o compress=zstd,subvol=@home /dev/sda3 /mnt/gentoo/home
+mount -o compress=zstd,subvol=@.snapshots /dev/sda3 /mnt/gentoo/.snapshots
+mount /dev/sda1 /mnt/gentoo/boot
 
 resume normal gentoo install
 
