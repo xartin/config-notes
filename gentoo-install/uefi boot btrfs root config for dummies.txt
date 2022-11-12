@@ -32,10 +32,15 @@ btrfs su cr /mnt/gentoo/@.snapshots
 
 umount /mnt/gentoo
 
+4) mount destination root filesystem
+
 mount -o subvol=@ /dev/sda3 /mnt/gentoo
 
-# You need to manually create folder to mount the other subvolumes at
+5) create mountpoint subdiectories
+
 mkdir /mnt/gentoo/{boot,home,.snapshots}
+
+6) mount subdirectories
 
 mount -o compress=zstd,subvol=@home /dev/sda3 /mnt/gentoo/home
 mount -o compress=zstd,subvol=@.snapshots /dev/sda3 /mnt/gentoo/.snapshots
