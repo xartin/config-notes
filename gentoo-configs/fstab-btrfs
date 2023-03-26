@@ -29,3 +29,6 @@ UUID=b66badb2-f699-485c-a67c-4c08cce6fa11		/.snapshots		btrfs		defaults,compress
 
 UUID=ad46c3bc-2e30-498f-945b-f248c6815b67		none			swap		sw							0 0
 UUID=6CE2-9D9D						/boot			vfat		defaults						0 2
+
+# tmpfs for portage compile directory
+tmpfs /var/tmp/portage tmpfs rw,nosuid,noatime,nodev,size=4G,mode=775,uid=portage,gid=portage,x-mount.mkdir=775 0 0
