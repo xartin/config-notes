@@ -56,4 +56,4 @@ UUID=847df035-e726-45e9-9cff-fb46aa97ae6e       /               btrfs           
 UUID=847df035-e726-45e9-9cff-fb46aa97ae6e       /home           btrfs           defaults,compress=zstd,subvolid=257,subvol=@home       0 0
 UUID=847df035-e726-45e9-9cff-fb46aa97ae6e       /.snapshots     btrfs           defaults,compress=zstd,subvolid=258,subvol=@.snapshots 0 0
 UUID=e30fbe93-d09e-4ea9-a1c7-d18d5c5c95fb       none            swap            sw              0 0
-UUID=7F8B-5EF0                                  /efi            vfat            noauto,defaults 0 2
+UUID=7F8B-5EF0                                  /boot           vfat            defaults 0 2
