@@ -1,0 +1,13 @@
+UUID=2f2e5213-69d6-4eea-a772-dab42536cab3  /                       btrfs  defaults                      0  0
+UUID=2f2e5213-69d6-4eea-a772-dab42536cab3  /var                    btrfs  subvol=/@/var                 0  0
+UUID=2f2e5213-69d6-4eea-a772-dab42536cab3  /usr/local              btrfs  subvol=/@/usr/local           0  0
+UUID=2f2e5213-69d6-4eea-a772-dab42536cab3  /tmp                    btrfs  subvol=/@/tmp                 0  0
+UUID=2f2e5213-69d6-4eea-a772-dab42536cab3  /srv                    btrfs  subvol=/@/srv                 0  0
+UUID=2f2e5213-69d6-4eea-a772-dab42536cab3  /root                   btrfs  subvol=/@/root                0  0
+UUID=2f2e5213-69d6-4eea-a772-dab42536cab3  /opt                    btrfs  subvol=/@/opt                 0  0
+UUID=2f2e5213-69d6-4eea-a772-dab42536cab3  /home                   btrfs  subvol=/@/home                0  0
+UUID=2f2e5213-69d6-4eea-a772-dab42536cab3  /boot/grub2/x86_64-efi  btrfs  subvol=/@/boot/grub2/x86_64-efi  0  0
+UUID=2f2e5213-69d6-4eea-a772-dab42536cab3  /boot/grub2/i386-pc     btrfs  subvol=/@/boot/grub2/i386-pc  0  0
+UUID=78E5-0128                             /boot/efi               vfat   utf8                          0  2
+UUID=7ee037b3-0328-41cd-8d19-ac2a904b3202  swap                    swap   defaults                      0  0
+UUID=2f2e5213-69d6-4eea-a772-dab42536cab3  /.snapshots             btrfs  subvol=/@/.snapshots          0  0
