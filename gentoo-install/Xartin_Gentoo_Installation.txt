@@ -1,4 +1,4 @@
-Download a Linux distro livecd of your're choosing flashed to USB stick, boot live environment and don't install:
+rDownload a Linux distro livecd of your're choosing flashed to USB stick, boot live environment and don't install:
 
 Open the terminal:
 
@@ -266,7 +266,7 @@ emerge -uDN world
 
 === Install xorg-x11 ===
 
-emerge xorg-x11
+emerge xorg-server
 
 === Install general applications and plasma desktop: ===
 
