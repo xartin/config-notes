@@ -85,7 +85,7 @@ VIDEO_CARDS="nvidia intel i915"
 #VIDEO_CARDS="intel i915 i965 iris"
 
 USE="elogind dbus networkmanager pulseaudio osmesa vulkan -systemd"
-RUBY_TARGETS="ruby27"
+RUBY_TARGETS="ruby32"
 INPUT_DEVICES="libinput"
 
 GRUB_PLATFORMS="efi-64"
