@@ -25,7 +25,7 @@
 
 UUID=157bf9c5-3297-4f37-8afb-afdf87ecf14c       /               ext4            defaults 0 1
 UUID=a1c5ccd0-29e7-4b21-97b3-91b6a9511ab1	      none		        swap            sw       0 0
-UUID=CB72-7545		/efi            vfat            defaults 0 2
+UUID=CB72-7545		                             /boot            vfat            defaults 0 2
 
 # tmpfs for portage compile directory
 tmpfs /var/tmp/portage tmpfs rw,nosuid,noatime,nodev,size=4G,mode=775,uid=portage,gid=portage,x-mount.mkdir=775 0 0
