@@ -12,8 +12,8 @@ parted -a optimal /dev/sda
 
 mklabel gpt 
 mkpart esp fat32 0% 513 
-mkpart swap linux-swap 513 16896 
-mkpart rootfs btrfs 16896 100% 
+mkpart swap linux-swap 513 8705 
+mkpart rootfs btrfs 8705 100% 
 set 1 boot on
 
 2) create filesystems
