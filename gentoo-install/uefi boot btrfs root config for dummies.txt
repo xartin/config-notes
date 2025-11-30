@@ -4,7 +4,7 @@ https://www.nishantnadkarni.tech/posts/arch_installation/
 
 1) Parted
 
-uefi
+1GB esp
 16GB swap
 btrfs rootfs 
  
@@ -12,7 +12,7 @@ parted -a optimal /dev/sda
 
 mklabel gpt 
 mkpart esp fat32 0% 1025 
-mkpart swap linux-swap 1025 9217 
+mkpart swap linux-swap 1025 9217
 mkpart rootfs btrfs 9217 100% 
 set 1 boot on
 
@@ -57,3 +57,4 @@ UUID=847df035-e726-45e9-9cff-fb46aa97ae6e       /home           btrfs           
 UUID=847df035-e726-45e9-9cff-fb46aa97ae6e       /.snapshots     btrfs           defaults,compress=zstd,subvolid=258,subvol=@.snapshots 0 0
 UUID=e30fbe93-d09e-4ea9-a1c7-d18d5c5c95fb       none            swap            sw              0 0
 UUID=7F8B-5EF0                                  /boot           vfat            defaults 0 2
+
