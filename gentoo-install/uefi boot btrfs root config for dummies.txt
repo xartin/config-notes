@@ -34,17 +34,17 @@ umount /mnt/gentoo
 
 4) mount destination root filesystem
 
-mount -o subvol=@ /dev/sda3 /mnt/gentoo
+mount -o compress=zstd,subvol=@ /dev/sda3 /mnt/gentoo
 
 5) create mountpoint subdiectories
 
-mkdir /mnt/gentoo/{boot,home,.snapshots}
+mkdir /mnt/gentoo/{boot,boot/efi,home,.snapshots}
 
 6) mount subdirectories
 
 mount -o compress=zstd,subvol=@home /dev/sda3 /mnt/gentoo/home
 mount -o compress=zstd,subvol=@.snapshots /dev/sda3 /mnt/gentoo/.snapshots
-mount /dev/sda1 /mnt/gentoo/boot
+mount /dev/sda1 /mnt/gentoo/boot/efi
 
 resume normal gentoo install
 
@@ -56,5 +56,5 @@ UUID=847df035-e726-45e9-9cff-fb46aa97ae6e       /               btrfs           
 UUID=847df035-e726-45e9-9cff-fb46aa97ae6e       /home           btrfs           defaults,compress=zstd,subvolid=257,subvol=@home       0 0
 UUID=847df035-e726-45e9-9cff-fb46aa97ae6e       /.snapshots     btrfs           defaults,compress=zstd,subvolid=258,subvol=@.snapshots 0 0
 UUID=e30fbe93-d09e-4ea9-a1c7-d18d5c5c95fb       none            swap            sw              0 0
-UUID=7F8B-5EF0                                  /boot           vfat            defaults 0 2
+UUID=7F8B-5EF0                                  /boot/efi       vfat            defaults 0 2
 
