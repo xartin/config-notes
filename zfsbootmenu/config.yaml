@@ -1,0 +1,19 @@
+Global:
+  ManageImages: true
+  BootMountPoint: /boot/efi
+  DracutConfDir: /etc/zfsbootmenu/dracut.conf.d
+  PreHooksDir: /etc/zfsbootmenu/generate-zbm.pre.d
+  PostHooksDir: /etc/zfsbootmenu/generate-zbm.post.d
+  InitCPIOConfig: /etc/zfsbootmenu/mkinitcpio.conf
+Components:
+  ImageDir: /boot/efi/EFI/zbm
+  Versions: 3
+  Enabled: true
+EFI:
+  ImageDir: /boot/efi/EFI/zbm
+  Stub: /usr/lib/systemd/boot/efi/linuxx64.elf.stub
+  Versions: false
+  Enabled: false
+  SplashImage: /etc/zfsbootmenu/splash.bmp
+Kernel:
+  CommandLine: ro
